@@ -51,21 +51,21 @@ setTimeout(() => {
   // Trigger events
   evenex.emit('changeCount', count + 1)
 
-  console.log('hasEvent -> changeCount 01', evenex.hasEvent('changeCount'))
+  console.log('has -> changeCount 01', evenex.has('changeCount'))
 
   // Unsubscribe from events
   evenex.off('changeCount', on1)
   evenex.off('changeCount', on2)
 
   // Check if an event exists
-  console.log('hasEvent -> changeCount 02', evenex.hasEvent('changeCount'))
+  console.log('has -> changeCount 02', evenex.has('changeCount'))
 
-  console.log('eventBus -> 01', evenex.eventBus)
+  console.log('events -> 01', evenex.events)
 
   // Clear all events
   evenex.clear()
 
-  console.log('eventBus -> 02', evenex.eventBus)
+  console.log('events -> 02', evenex.events)
 }, 1000)
 ```
 
@@ -103,7 +103,7 @@ Trigger all handlers registered for the specified event.
 
 Clear all handlers registered for events.
 
-### hasEvent
+### has
 
 Check if the specified event exists
 

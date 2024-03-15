@@ -51,21 +51,21 @@ setTimeout(() => {
   // 触发事件
   evenex.emit('changeCount', count + 1)
 
-  console.log('hasEvent -> changeCount 01', evenex.hasEvent('changeCount'))
+  console.log('has -> changeCount 01', evenex.has('changeCount'))
 
   // 取消监听
   evenex.off('changeCount', on1)
   evenex.off('changeCount', on2)
 
   // 检查事件是否存在
-  console.log('hasEvent -> changeCount 02', evenex.hasEvent('changeCount'))
+  console.log('has -> changeCount 02', evenex.has('changeCount'))
 
-  console.log('eventBus -> 01', evenex.eventBus)
+  console.log('events -> 01', evenex.events)
 
   // 置空所有事件
   evenex.clear()
 
-  console.log('eventBus -> 02', evenex.eventBus)
+  console.log('events -> 02', evenex.events)
 }, 1000)
 ```
 
@@ -103,7 +103,7 @@ setTimeout(() => {
 
 置空所有事件注册的处理程序
 
-### hasEvent
+### has
 
 检查指定的事件是否存在
 
