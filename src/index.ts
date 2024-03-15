@@ -73,7 +73,7 @@ class Evenex {
     this.events = {}
   }
 
-  hasEvent(type: string) {
+  has(type: string) {
     return Object.keys(this.events).includes(type)
   }
 }
