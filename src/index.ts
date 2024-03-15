@@ -1,16 +1,16 @@
 import { THandles, IEvents, THandler } from './types'
 
 const boundary = (
-  eventName: string,
+  type: string,
   handler: THandler | null,
   handles: THandles,
-  { checkCallback = true }: { checkCallback?: boolean } = {}
+  { checkHandle = true }: { checkHandle?: boolean } = {}
 ) => {
-  if (typeof eventName !== 'string') {
+  if (typeof type !== 'string') {
     throw new TypeError('the event name must be string type')
   }
 
-  if (checkCallback) {
+  if (checkHandle) {
     if (typeof handler !== 'function')
       throw new TypeError('the event callback must be function type')
   }
@@ -60,7 +60,7 @@ class Evenex {
   emit(type: string, ...payload: any[]) {
     const handles = this.events[type]
     const isVerify = boundary(type, null, handles, {
-      checkCallback: false
+      checkHandle: false
     })
     if (!isVerify) return
 

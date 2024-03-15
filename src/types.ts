@@ -1,10 +1,10 @@
+export type THandler = (...payload: any[]) => any
+
 export type THandles = Array<{
-  handler: (...args: any[]) => any
+  handler: THandler
   thisArg: any
 }>
 
 export interface IEvents {
   [key: string]: THandles
 }
-
-export type THandler = (...args: any[]) => any
