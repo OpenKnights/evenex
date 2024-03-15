@@ -4,7 +4,7 @@ const boundary = (
   type: string,
   handler: THandler | null,
   handles: THandles,
-  { checkHandle = true }: { checkHandle?: boolean } = {}
+  checkHandle: boolean = true
 ) => {
   if (typeof type !== 'string') {
     throw new TypeError('the event name must be string type')
@@ -42,29 +42,23 @@ class Evenex {
     const isVerify = boundary(type, handler, handles)
     if (!isVerify) return
 
-    if (!handler || handles.length === 0) {
-      delete this.events[type]
-    } else {
-      for (let i = 0; i < handles.length; i++) {
-        const currHandler = handles[i].handler
-        if (currHandler === handler) {
-          handles.splice(i, 1)
-          break
-        }
+    for (let i = 0; i < handles.length; i++) {
+      const currHandle = handles[i].handler
+      if (currHandle === handler) {
+        handles.splice(i, 1)
+        break
       }
-
-      if (handles.length === 0) delete this.events[type]
     }
+
+    if (handles.length === 0) delete this.events[type]
   }
 
   emit(type: string, ...payload: any[]) {
     const handles = this.events[type]
-    const isVerify = boundary(type, null, handles, {
-      checkHandle: false
-    })
+    const isVerify = boundary(type, null, handles, false)
     if (!isVerify) return
 
-    handles.forEach(({ handler, thisArg }) => {
+    handles.map(({ handler, thisArg }) => {
       handler.apply(thisArg, payload)
     })
   }
