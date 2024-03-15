@@ -1,9 +1,9 @@
-import { IHandle, IEvents, TCallback } from './types'
+import { THandles, IEvents, THandler } from './types'
 
 const boundary = (
   eventName: string,
-  handler: TCallback | null,
-  handles: IHandle[],
+  handler: THandler | null,
+  handles: THandles,
   { checkCallback = true }: { checkCallback?: boolean } = {}
 ) => {
   if (typeof eventName !== 'string') {
@@ -24,7 +24,7 @@ class Evenex {
     this.events = {}
   }
 
-  on(type: string, handler: TCallback, thisArg?: any) {
+  on(type: string, handler: THandler, thisArg?: any) {
     let handles = this.events[type]
     const isVerify = boundary(type, handler, handles)
     if (!isVerify) {
@@ -37,7 +37,7 @@ class Evenex {
     })
   }
 
-  off(type: string, handler: TCallback) {
+  off(type: string, handler: THandler) {
     const handles = this.events[type]
     const isVerify = boundary(type, handler, handles)
     if (!isVerify) return

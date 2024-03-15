@@ -1,10 +1,10 @@
-export interface IHandle {
+export type THandles = Array<{
   handler: (...args: any[]) => any
   thisArg: any
-}
+}>
 
 export interface IEvents {
-  [key: string]: IHandle[]
+  [key: string]: THandles
 }
 
-export type TCallback = (...args: any[]) => any
+export type THandler = (...args: any[]) => any
