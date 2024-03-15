@@ -2,6 +2,10 @@
 
 > An event bus library implemented in TypeScript.（ English | [中文](README_zh.md)）
 
+- **Evenex：** Derived from "Event" and "Nexus", it signifies the role of the event bus as a nexus connecting different events and dispatch centers.
+- **Microscopic：** It boasts a minuscule size, less than 10kb after compression.
+- **Familiar：** We've implemented a sensible API design akin to other EventBus libraries, ensuring an easy learning curve for users.
+
 ## Install
 
 Please make sure you install this library using npm or another package manager in a Node.js environment.

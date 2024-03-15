@@ -2,9 +2,9 @@
 
 > 一个使用 TypeScript 实现的事件总线库（ [English](README.md) | 中文 ）
 
-- **Evenex：** Derived from "Event" and "Nexus", it signifies the role of the event bus as a nexus connecting different events and dispatch centers.
-- **Microscopic：** It boasts a minuscule size, less than 10kb after compression.
-- **Familiar：** We've implemented a sensible API design akin to other EventBus libraries, ensuring an easy learning curve for users.
+- **Evenex：** 取自“Event”和“Nexus”，意为事件总线作为连接不同事件和派发中心的角色。
+- **Microscopic：** 体积微小，压缩后小于10kb
+- **Familiar：** 我们采用了合理的 API 设计，与其他任何 EventBus 库类似，让您轻松上手。
 
 ## 安装
 
