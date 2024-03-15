@@ -14,21 +14,17 @@ Then, utilize modern module bundling tools such as Vite or Webpack to import thi
 
 ```javascript
 // Using ES Module
-import evenex from 'evenex'
+import { CreateEvenex } from 'evenex'
 
 // Using CommonJS
-var evenex = require('evenex')
+var { CreateEvenex } = require('evenex')
 ```
 
 ## Usage
 
 ```javascript
-// The module exports an instance of the Evenex class by default, and we also export the Evenex class separately.
-import evenex from 'evenex'
-
-// Alternatively, you can use it like this
-import { Evenex } from 'evenex'
-const evenex = new Evenex()
+import { CreateEvenex } from 'evenex'
+const evenex = CreateEvenex()
 
 let count = 0
 let setCount = (val) => (count = val)

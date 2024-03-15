@@ -2,6 +2,10 @@
 
 > 一个使用 TypeScript 实现的事件总线库（ [English](README.md) | 中文 ）
 
+- **Evenex：** Derived from "Event" and "Nexus", it signifies the role of the event bus as a nexus connecting different events and dispatch centers.
+- **Microscopic：** It boasts a minuscule size, less than 10kb after compression.
+- **Familiar：** We've implemented a sensible API design akin to other EventBus libraries, ensuring an easy learning curve for users.
+
 ## 安装
 
 请确保您在 Node.js 环境下使用 npm 或其他包管理器安装此库。
@@ -14,20 +18,17 @@ npm install --save evenex
 
 ```javascript
 // 使用 ES Module
-import evenex from 'evenex'
+import { CreateEvenex } from 'evenex'
 
 // 使用 CommonJS
-var evenex = require('evenex')
+var { CreateEvenex } = require('evenex')
 ```
 
 ## 使用
 
 ```javascript
-// 模块默认导出了一个 Evenex 类的实例，同时我们也单独导出了 Evenex 类。
-import evenex from 'evenex'
-// 或者，你也可以这样使用
-// import { Evenex } from 'evenex';
-// const evenex = new Evenex();
+import { CreateEvenex } from 'evenex'
+const evenex = CreateEvenex()
 
 let count = 0
 let setCount = (val) => (count = val)
