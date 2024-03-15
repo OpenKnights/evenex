@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["esnext"],
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": false,
+    "strict": true,
+    "strictNullChecks": true
+  },
+  "include": ["src/*.ts"]
+}
