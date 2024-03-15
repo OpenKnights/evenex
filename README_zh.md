@@ -3,7 +3,7 @@
 > 一个使用 TypeScript 实现的事件总线库（ [English](README.md) | 中文 ）
 
 - **Evenex：** 取自“Event”和“Nexus”，意为事件总线作为连接不同事件和派发中心的角色。
-- **Microscopic：** 体积微小，压缩后小于10kb
+- **Microscopic：** 体积微小，压缩后小于1kb
 - **Familiar：** 我们采用了合理的 API 设计，与其他任何 EventBus 库类似，让您轻松上手。
 
 ## 安装
