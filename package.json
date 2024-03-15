@@ -1,7 +1,7 @@
 {
   "name": "evenex",
   "type": "module",
-  "version": "1.0.19",
+  "version": "1.0.24",
   "description": "An event bus library implemented in TypeScript.",
   "author": "king-3 <w2196592083@gmail.com>",
   "license": "MIT",
@@ -34,8 +34,7 @@
     "dev": "yarn build --watch",
     "test": "npx nodemon test/index.js",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
-    "prettier": "prettier --config .prettierrc.json --write ./**/**/*.{js,jsx,ts,tsx,json}",
-    "publish": "nrm use npm && yarn build && npm publish"
+    "prettier": "prettier --config .prettierrc.json --write ./**/**/*.{js,jsx,ts,tsx,json}"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
