@@ -7,7 +7,6 @@ import terser from '@rollup/plugin-terser'
 import babel from '@rollup/plugin-babel'
 import { DEFAULT_EXTENSIONS } from '@babel/core'
 
-const env = process.env.NODE_ENV // umd 模式的编译结果文件输出的全局变量名称
 const entries = ['src/index.ts']
 const plugins = [
   resolve(),
@@ -18,9 +17,9 @@ const plugins = [
     babelHelpers: 'bundled',
     exclude: 'node_modules/**',
     extensions: [...DEFAULT_EXTENSIONS, '.ts']
-  })
+  }),
+  terser()
 ]
-if (env === 'production') plugins.push(terser())
 
 const rollupConfig = [
   ...entries.map((input) => ({
