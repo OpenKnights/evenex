@@ -1,9 +1,5 @@
-// The module exports an instance of the Evenex class by default, and we also export the Evenex class separately.
-import evenex from '../dist/index.esm.js'
-
-// Alternatively, you can use it like this
-// import { Evenex } from 'evenex';
-// const evenex = new Evenex();
+import { CreateEvenex } from '../dist/index.esm.js'
+const evenex = CreateEvenex()
 
 let count = 0
 let setCount = (val) => (count = val)

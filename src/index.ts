@@ -78,6 +78,5 @@ class Evenex {
   }
 }
 
-const evenex = new Evenex()
-export default evenex
-export { Evenex }
+const CreateEvenex = () => new Evenex()
+export { CreateEvenex }
