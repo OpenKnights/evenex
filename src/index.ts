@@ -27,10 +27,12 @@ class Evenex {
   on(type: string, handler: THandler, thisArg?: any) {
     let handles = this.events[type]
     const isVerify = boundary(type, handler, handles)
+
     if (!isVerify) {
       handles = []
       this.events[type] = handles
     }
+
     handles.push({
       handler,
       thisArg
