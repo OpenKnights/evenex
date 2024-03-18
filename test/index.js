@@ -16,7 +16,7 @@ const on2 = (count) => {
 // Listen for events
 evenex.on('changeCount', on1)
 evenex.on('changeCount', on2)
-evenex.on('test', on2)
+// evenex.on('test', on2)
 
 setTimeout(() => {
   // Trigger events
