@@ -21,7 +21,7 @@ const plugins = [
   terser()
 ]
 
-const rollupConfig = [
+const rollup_config = [
   ...entries.map((input) => ({
     input,
     output: [
@@ -48,4 +48,4 @@ const rollupConfig = [
   }))
 ]
 
-export default rollupConfig
+export default rollup_config
