@@ -1,7 +1,7 @@
 {
   "name": "evenex",
   "type": "module",
-  "version": "1.1.02",
+  "version": "1.1.2",
   "description": "An event bus library implemented in TypeScript.",
   "author": "king-3 <w2196592083@gmail.com>",
   "license": "MIT",
