@@ -1,13 +1,13 @@
-import { CreateEvenex } from '../dist/index.esm.js'
+import { CreateEvenex } from '../src/index'
 const evenex = CreateEvenex()
 
 let count = 0
-let setCount = (val) => (count = val)
+let setCount = (val: number) => (count = val)
 
-const on1 = (num) => {
+const on1 = (num: number) => {
   setCount(num)
 }
-const on2 = (count) => {
+const on2 = (count: number) => {
   setTimeout(() => {
     console.log(`emit1-count:`, count)
   }, 100)
@@ -31,10 +31,10 @@ setTimeout(() => {
   // Check if an event exists
   console.log('has -> changeCount 02', evenex.has('changeCount'))
 
-  console.log('events -> 01', evenex.events)
+  console.log('Evenex {events} -> 01', evenex)
 
   // Clear all events
   evenex.clear()
 
-  console.log('events -> 02', evenex.events)
+  console.log('Evenex {events} -> 02', evenex)
 }, 1000)

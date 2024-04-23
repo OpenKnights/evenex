@@ -32,9 +32,9 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "yarn build --watch",
-    "test": "npx nodemon test/index.js",
-    "lint": "eslint src/**/*.{js,jsx,ts,tsx,json}",
-    "prettier": "prettier --config .prettierrc.json --write ./**/**/*.{js,jsx,ts,tsx,json}"
+    "test": "npx --yes tsx test/index.ts",
+    "lint": "eslint tr/**/*.{js,jsx,ts,tsx,json}",
+    "prettier": "prettier --config .prettierrc.json --write src/**/*.{js,jsx,ts,tsx,json}"
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",

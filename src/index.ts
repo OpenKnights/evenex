@@ -76,3 +76,6 @@ class Evenex {
 
 const CreateEvenex = () => new Evenex()
 export { CreateEvenex }
+
+const evenex = CreateEvenex()
+export default evenex
