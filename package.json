@@ -1,7 +1,7 @@
 {
   "name": "evenex",
   "type": "module",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "An event bus library implemented in TypeScript.",
   "author": "king-3 <w2196592083@gmail.com>",
   "license": "MIT",
@@ -36,10 +36,7 @@
   "scripts": {
     "build": "rollup -c",
     "test": "jest",
-    "lint": "pnpm lint:src && pnpm lint:types && pnpm lint:test",
-    "lint:src": "eslint src/**/*.ts",
-    "lint:test": "eslint test/**/*.ts",
-    "lint:types": "eslint types/**/*.ts",
+    "lint": "npx eslint src/**/*.ts && npx eslint test/**/*.ts && npx eslint types/**/*.ts",
     "prettier": "prettier --config .prettierrc.json --write ./**/*.{ts,json}",
     "releases": "tsx publish.ts",
     "versihint": "npx bump"
