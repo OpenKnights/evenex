@@ -7,9 +7,10 @@
     "skipLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "strict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src/*.ts"]
+  "include": ["src/*.ts", "types/index.d.ts"]
 }

@@ -1,20 +1,35 @@
 {
+  "root": true,
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
-    "eslint:recommended",
+    "airbnb-base",
+    "airbnb-typescript/base",
     "plugin:@typescript-eslint/recommended",
+    "prettier",
     "plugin:prettier/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off"
-  }
+    "@typescript-eslint/no-explicit-any": "off", // 是否禁用any
+    "import/prefer-default-export": "off", // 当文件中只有一个导出时优先使用默认导出
+    "no-plusplus": "off" // 是否禁止使用一元运算符++和--
+  },
+  "overrides": [
+    {
+      "files": ["test/**/*.test.ts"],
+      "parserOptions": {
+        "project": "./tsconfig.test.json"
+      }
+    }
+  ]
 }

@@ -1,4 +1,5 @@
-export type THandler = (...payload: any[]) => any
+//! Handle types
+export type THandler = (...payload: any[]) => void
 
 type THandle = {
   handler: THandler
@@ -7,6 +8,7 @@ type THandle = {
 
 export type THandles = Array<THandle>
 
+//! Event types
 export interface IEvents {
   [key: string]: THandles
 }

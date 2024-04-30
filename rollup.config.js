@@ -9,9 +9,11 @@ import { DEFAULT_EXTENSIONS } from '@babel/core'
 
 const entries = ['src/index.ts']
 const plugins = [
-  resolve(),
-  commonjs(),
+  resolve({
+    preferBuiltins: true
+  }),
   json(),
+  commonjs(),
   typescript(),
   babel({
     babelHelpers: 'bundled',

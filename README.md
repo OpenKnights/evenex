@@ -1,30 +1,30 @@
 # Evenex
 
-> 一个使用 TypeScript 实现的事件总线库（ 简体中文 | [English](README_en.md) ）
+> An event bus library implemented in TypeScript.（ [简体中文](README.md) | English）
 
-- **Evenex：** 取自“Event”和“Nexus”，意为事件总线作为连接不同事件和派发中心的角色。
-- **Microscopic：** 体积微小，压缩后小于1kb
-- **Familiar：** 我们采用了合理的 API 设计，与其他任何 EventBus 库类似，让您轻松上手。
+- **Evenex：** Derived from "Event" and "Nexus", it signifies the role of the event bus as a nexus connecting different events and dispatch centers.
+- **Microscopic：** It boasts a minuscule size, less than 1kb after compression.
+- **Familiar：** We've implemented a sensible API design akin to other EventBus libraries, ensuring an easy learning curve for users.
 
-## 安装
+## Install
 
-请确保您在 Node.js 环境下使用 npm 或其他包管理器安装此库。
+Please make sure you install this library using npm or another package manager in a Node.js environment.
 
 ```shell
 npm install --save evenex
 ```
 
-然后，利用现代的模块捆绑工具，如 Vite 或 Webpack，以模块化的语法引入此库。
+Then, utilize modern module bundling tools such as Vite or Webpack to import this library using modular syntax.
 
 ```javascript
-// 使用 ES Module
+// Using ES Module
 import { CreateEvenex } from 'evenex'
 
-// 使用 CommonJS
+// Using CommonJS
 var { CreateEvenex } = require('evenex')
 ```
 
-## 使用
+## Usage
 
 ```javascript
 import { CreateEvenex } from 'evenex'
@@ -42,71 +42,71 @@ const on2 = (count) => {
   }, 100)
 }
 
-// 监听事件
+// Listen for events
 evenex.on('changeCount', on1)
 evenex.on('changeCount', on2)
 evenex.on('test', on2)
 
 setTimeout(() => {
-  // 触发事件
+  // Trigger events
   evenex.emit('changeCount', count + 1)
 
   console.log('has -> changeCount 01', evenex.has('changeCount'))
 
-  // 取消监听
+  // Unsubscribe from events
   evenex.off('changeCount', on1)
   evenex.off('changeCount', on2)
 
-  // 检查事件是否存在
+  // Check if an event exists
   console.log('has -> changeCount 02', evenex.has('changeCount'))
 
   console.log('events -> 01', evenex.events)
 
-  // 置空所有事件
+  // Clear all events
   evenex.clear()
 
   console.log('events -> 02', evenex.events)
 }, 1000)
 ```
 
-## 方法
+## API
 
 ### on
 
-为指定事件注册一个处理函数
+Register a handler for a specified event.
 
-**参数**
+**Parameters**
 
-- `type` **(string)** 要监听的事件类型。
-- `handler` **(Function)** 在接收到指定事件时调用的函数。
-- `thisArg` **(any)** 用于指定调用函数时的 this 上下文。
+- `type` **(string)** The type of event to listen for.
+- `handler` **(Function)** The function to call when the specified event is received.
+- `thisArg` **(any)** The context to be used when calling the function.
 
 ### off
 
-取消监听某个事件的处理函数
+Unsubscribe from handling a specific event.
 
-**参数**
+**Parameters**
 
-- `type` **(string)** 要取消监听的事件类型。
-- `handler` **(Function)** 接收该事件已注册的处理函数。
+- `type` **(string)** The type of event to unsubscribe from.
+- `handler` **(Function)** The handler function registered for the event.
 
 ### emit
 
-触发指定事件注册的所有处理程序
+Trigger all handlers registered for the specified event.
 
-**参数**
+**Parameters**
 
-- `type` **(string)** 要触发的事件类型。
-- `...payload` **(any)** 所需要传递的任何参数
+- `type` **(string)** The type of event to trigger.
+- `...payload` **(any)** Any arguments that need to be passed.
 
 ### clear
 
-置空所有事件注册的处理程序
+Clear all handlers registered for events.
 
 ### has
 
-检查指定的事件是否存在
+Check if the specified event exists
 
-**参数**
+**Parameters**
 
-- `type` **(string)** 要检查的事件类型。
+- `type` **(string)** The type of event to check.
