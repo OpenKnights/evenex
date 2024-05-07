@@ -1,2 +1,15 @@
-/node_modules
-/dist
+*.sh
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
+.husky
+.local
+dist
+node_modules
+Dockerfile
+/public
+/docs
+/bin
+.eslintrc-auto-import

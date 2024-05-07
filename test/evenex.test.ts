@@ -1,4 +1,5 @@
-import { createEvenex, Evenex } from '../src/index'
+import { createEvenex } from '../src/index'
+import type { Evenex } from '../src/evenex'
 
 let evenex: Evenex
 beforeAll(() => {

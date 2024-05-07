@@ -12,5 +12,5 @@
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/*.ts", "types/index.d.ts"]
+  "include": ["src/**/*.ts", "types/index.ts"]
 }
