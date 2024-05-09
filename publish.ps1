@@ -7,19 +7,11 @@
   //registry.npmjs.org/:_authToken=npm_you_token
 #>
 
-# 删除 dist 文件
-function remove-filer($FOLDER_PATH) {
-  $TRUE_FALSE=(Test-Path $FOLDER_PATH)
-  if($TRUE_FALSE -eq "True"){
-    remove-Item -Recurse -Force $FOLDER_PATH
-  }
-}
-remove-filer("dist")
-remove-filer("index.d.ts")
+# 打包前删除打包文件
+pwsh './clear.ps1'
 
 # 执行 build 命令
 pnpm build
-
 
 # 获取 package.json 配置
 $Path = "package.json"  #文件名称
@@ -35,3 +27,5 @@ if ($pkg.version -like "*beta*") {
   npm publish
 }
 
+# 打包后删除打包文件
+pwsh './clear.ps1'

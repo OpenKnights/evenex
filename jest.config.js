@@ -11,7 +11,7 @@ const config = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   coveragePathIgnorePatterns: ['/node_modules/'],
-  collectCoverageFrom: ['test/*.{js,jsx, tsx, ts}']
+  collectCoverageFrom: ['test/**/*.{js,jsx, tsx, ts}']
 }
 
 export default config

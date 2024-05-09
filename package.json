@@ -8,7 +8,7 @@
   "homepage": "https://github.com/OpenKnights/evenex#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OpenKnights/evenex.git"
+    "url": "git+https://github.com/OpenKnights/evenex.git"
   },
   "bugs": {
     "url": "https://github.com/OpenKnights/evenex/issues"
@@ -37,6 +37,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
+    "clear": "pwsh clear.ps1",
     "test": "jest",
     "lint": "npx eslint src/**/*.ts && npx eslint test/**/*.ts && npx eslint types/**/*.ts",
     "prettier": "npx prettier --config .prettierrc.json --write ./**/*.{js,ts,json}",
