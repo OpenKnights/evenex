@@ -1,6 +1,6 @@
 # Evenex
 
-> 一个使用 TypeScript 实现的事件总线库（ 简体中文 | [English](README_en.md) ）
+> 一个使用 TypeScript 实现的事件总线库（ 简体中文 | [English](README.md) ）
 
 - **Evenex：** 取自“Event”和“Nexus”，意为事件总线作为连接不同事件和派发中心的角色。
 - **Microscopic：** 体积微小，压缩后小于1kb

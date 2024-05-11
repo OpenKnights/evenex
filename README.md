@@ -1,6 +1,6 @@
 # Evenex
 
-> An event bus library implemented in TypeScript.（ English | [简体中文](README.md) ）
+> An event bus library implemented in TypeScript.（ English | [简体中文](README_zh.md) ）
 
 - **Evenex：** Derived from "Event" and "Nexus", it signifies the role of the event bus as a nexus connecting different events and dispatch centers.
 - **Microscopic：** It boasts a minuscule size, less than 1kb after compression.
