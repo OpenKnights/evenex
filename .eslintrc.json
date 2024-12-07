@@ -22,7 +22,8 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off", // 是否禁用any
     "import/prefer-default-export": "off", // 当文件中只有一个导出时优先使用默认导出
-    "no-plusplus": "off" // 是否禁止使用一元运算符++和--
+    "no-plusplus": "off", // 是否禁止使用一元运算符++和--
+    "@typescript-eslint/ban-types": "off"
   },
   "overrides": [
     {

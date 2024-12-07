@@ -1,14 +1,22 @@
-//! Handle types
-export type THandler = (...payload: any[]) => void
+export type EventType = string
+export type EventThis<T = unknown> = T
 
-type THandle = {
-  handler: THandler
-  thisArg: any
+/**
+ * handler types
+ */
+export type EventHandler = (...payload: any[]) => void
+export type EventHandlerList = Array<{
+  handler: EventHandler
+  thisArg?: EventThis
+}>
+
+/**
+ * events Interface
+ */
+export interface Events {
+  [key: EventType]: EventHandlerList
 }
-
-export type THandles = Array<THandle>
-
-//! Event types
-export interface IEvents {
-  [key: string]: THandles
-}
+/**
+ * check Types
+ */
+export type CheckHandleType = boolean
