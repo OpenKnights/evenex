@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest'
+
 import { boundary } from '../src/util'
 
 let count = 0

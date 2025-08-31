@@ -17,10 +17,12 @@ npm install --save evenex
 然后，利用现代的模块捆绑工具，如 Vite 或 Webpack，以模块化的语法引入此库。
 
 ```javascript
-// 使用 ES Module
+// Using ES Module
 import { CreateEvenex } from 'evenex'
+```
 
-// 使用 CommonJS
+```javascript
+// Using CommonJS
 var { CreateEvenex } = require('evenex')
 ```
 
@@ -31,7 +33,7 @@ import { CreateEvenex } from 'evenex'
 const evenex = CreateEvenex()
 
 let count = 0
-let setCount = (val) => (count = val)
+const setCount = (val) => (count = val)
 
 const on1 = (num) => {
   setCount(num)

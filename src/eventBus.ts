@@ -1,4 +1,4 @@
-import { EventType, EventHandler, Events } from '../types'
+import type { EventHandler, Events, EventType } from './types'
 
 /**
  * Evenex's EventBus abstract class

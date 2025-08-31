@@ -19,7 +19,9 @@ Then, utilize modern module bundling tools such as Vite or Webpack to import thi
 ```javascript
 // Using ES Module
 import { CreateEvenex } from 'evenex'
+```
 
+```javascript
 // Using CommonJS
 var { CreateEvenex } = require('evenex')
 ```
@@ -31,7 +33,7 @@ import { CreateEvenex } from 'evenex'
 const evenex = CreateEvenex()
 
 let count = 0
-let setCount = (val) => (count = val)
+const setCount = (val) => (count = val)
 
 const on1 = (num) => {
   setCount(num)

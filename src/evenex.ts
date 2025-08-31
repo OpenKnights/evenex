@@ -1,4 +1,4 @@
-import type { Events, EventType, EventHandler } from '../types'
+import type { EventHandler, Events, EventType } from './types'
 import EventBus from './eventBus'
 import { boundary } from './util'
 

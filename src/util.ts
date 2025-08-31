@@ -1,16 +1,15 @@
 import type {
-  EventType,
+  CheckHandleType,
   EventHandler,
   EventHandlerList,
-  CheckHandleType
-} from '../types'
+  EventType
+} from './types'
 
-export const isFunction = (val: unknown): val is Function =>
-  typeof val === 'function'
+export const isFunction = (val: unknown): boolean => typeof val === 'function'
 
-export const isString = (val: unknown): val is string => typeof val === 'string'
+export const isString = (val: unknown): boolean => typeof val === 'string'
 
-export const isObject = (val: unknown): val is Record<any, any> =>
+export const isObject = (val: unknown): boolean =>
   val !== null && typeof val === 'object'
 
 export const boundary = (
