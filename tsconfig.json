@@ -1,16 +1,13 @@
 {
   "compilerOptions": {
     "target": "esnext",
+    "lib": ["ESNext"],
     "module": "esnext",
-    "lib": ["esnext", "DOM", "DOM.Iterable"],
-    "useDefineForClassFields": true,
-    "skipLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "esModuleInterop": true,
     "strict": true,
-    "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "types/index.ts"]
+  "include": ["**/*.ts"]
 }
