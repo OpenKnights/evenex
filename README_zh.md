@@ -1,114 +1,115 @@
 # Evenex
 
-> 一个使用 TypeScript 实现的事件总线库（ 简体中文 | [English](README.md) ）
+> 一个轻量级、类型安全、功能全面的**事件总线**库，适用于现代 JavaScript 和 TypeScript 项目。
 
-- **Evenex：** 取自“Event”和“Nexus”，意为事件总线作为连接不同事件和派发中心的角色。
-- **Microscopic：** 体积微小，压缩后小于1kb
-- **Familiar：** 我们采用了合理的 API 设计，与其他任何 EventBus 库类似，让您轻松上手。
+[![npm version](https://img.shields.io/npm/v/evenex.svg)](https://www.npmjs.com/package/evenex)
+[![npm downloads](https://img.shields.io/npm/dm/evenex.svg)](https://www.npmjs.com/package/evenex)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/evenex.svg)](https://bundlephobia.com/package/evenex)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 安装
+[English](README.md) | [简体中文](README_zh.md)
 
-请确保您在 Node.js 环境下使用 npm 或其他包管理器安装此库。
+## ✨ 功能特性
 
-```shell
-npm install --save evenex
+- ✅ 类型安全的事件定义
+- 🔁 `on` / `once` / `off` / `emit` API
+- 🧼 轻松清除和移除监听器
+- 🧰 实用方法：`has`, `listenerCount`, `eventNames`, `listeners`
+- 🛡️ 使用 `onError` 进行全局错误处理
+- 🧠 开发调试模式
+- ⚡ 无依赖且轻量级
+
+## 📦 安装
+
+```bash
+npm install evenex
+# or
+yarn add evenex
+# or
+pnpm add evenex
 ```
 
-然后，利用现代的模块捆绑工具，如 Vite 或 Webpack，以模块化的语法引入此库。
+## 🪄 基本用法
 
-```javascript
-// Using ES Module
-import { CreateEvenex } from 'evenex'
+```typescript
+import evenex from 'evenex'
+
+// Listen to an event
+evenex.on('hello', (name: string) => {
+  console.log(`Hello, ${name}!`)
+})
+
+// Emit event
+evenex.emit('hello', 'World')
+// -> Hello, World!
 ```
 
-```javascript
-// Using CommonJS
-var { CreateEvenex } = require('evenex')
-```
+## 🧠 类型安全的事件
 
-## 使用
+您可以定义自己的事件映射接口以获得更好的类型推断：
 
-```javascript
-import { CreateEvenex } from 'evenex'
-const evenex = CreateEvenex()
+```typescript
+import { createEvenex } from 'evenex'
 
-let count = 0
-const setCount = (val) => (count = val)
-
-const on1 = (num) => {
-  setCount(num)
+interface MyEvents {
+  'user:login': [userId: string]
+  'user:logout': []
 }
-const on2 = (count) => {
-  setTimeout(() => {
-    console.log(`emit1-count:`, count)
-  }, 100)
-}
 
-// 监听事件
-evenex.on('changeCount', on1)
-evenex.on('changeCount', on2)
-evenex.on('test', on2)
+const bus = createEvenex<MyEvents>()
 
-setTimeout(() => {
-  // 触发事件
-  evenex.emit('changeCount', count + 1)
+bus.on('user:login', (userId) => {
+  console.log('User logged in:', userId)
+})
 
-  console.log('has -> changeCount 01', evenex.has('changeCount'))
-
-  // 取消监听
-  evenex.off('changeCount', on1)
-  evenex.off('changeCount', on2)
-
-  // 检查事件是否存在
-  console.log('has -> changeCount 02', evenex.has('changeCount'))
-
-  console.log('events -> 01', evenex.events)
-
-  // 置空所有事件
-  evenex.clear()
-
-  console.log('events -> 02', evenex.events)
-}, 1000)
+bus.emit('user:login', '12345') // ✅ OK
+bus.emit('user:login') // ❌ Type error
 ```
 
-## 方法
+## 🧼 移除监听器
 
-### on
+```typescript
+const handler = () => console.log('event')
 
-为指定事件注册一个处理函数
+bus.on('foo', handler)
+bus.off('foo', handler) // remove specific
+bus.off('foo') // remove all listeners of foo
+bus.clear() // remove all listeners of all events
+```
 
-**参数**
+## 🛠 API
 
-- `type` **(string)** 要监听的事件类型。
-- `handler` **(Function)** 在接收到指定事件时调用的函数。
-- `thisArg` **(any)** 用于指定调用函数时的 this 上下文。
+| 方法                 | 描述                               |
+| -------------------- | ---------------------------------- |
+| on(event, handler)   | 订阅一个事件                       |
+| once(event, handler) | 仅订阅一次                         |
+| off(event, handler?) | 取消订阅处理器或该事件的全部处理器 |
+| emit(event, ...args) | 触发事件                           |
+| has(event)           | 检查事件是否有监听器               |
+| listenerCount(event) | 获取监听器的数量                   |
+| eventNames()         | 获取所有事件名称                   |
+| listeners(event)     | 获取所有监听函数                   |
+| clear(event?)        | 清除特定或所有事件                 |
+| removeAllListeners() | clear() 的别名                     |
 
-### off
+## 🪝 全局错误处理
 
-取消监听某个事件的处理函数
+```typescript
+import { createEvenex } from 'evenex'
 
-**参数**
+const bus = createEvenex({
+  onError(error, event, handler) {
+    console.error(`Error in ${String(event)}:`, error)
+  }
+})
 
-- `type` **(string)** 要取消监听的事件类型。
-- `handler` **(Function)** 接收该事件已注册的处理函数。
+bus.on('boom', () => {
+  throw new Error('💥')
+})
 
-### emit
+bus.emit('boom') // error is caught by onError
+```
 
-触发指定事件注册的所有处理程序
+## 📄 许可证
 
-**参数**
-
-- `type` **(string)** 要触发的事件类型。
-- `...payload` **(any)** 所需要传递的任何参数
-
-### clear
-
-置空所有事件注册的处理程序
-
-### has
-
-检查指定的事件是否存在
-
-**参数**
-
-- `type` **(string)** 要检查的事件类型。
+[MIT 许可证](LICENSE) © OpenKnights 贡献者

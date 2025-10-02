@@ -1,114 +1,115 @@
 # Evenex
 
-> An event bus library implemented in TypeScript.（ English | [简体中文](README_zh.md) ）
+> A lightweight, type-safe, fully-featured **Event Bus** library for modern JavaScript and TypeScript projects.
 
-- **Evenex：** Derived from "Event" and "Nexus", it signifies the role of the event bus as a nexus connecting different events and dispatch centers.
-- **Microscopic：** It boasts a minuscule size, less than 1kb after compression.
-- **Familiar：** We've implemented a sensible API design akin to other EventBus libraries, ensuring an easy learning curve for users.
+[![npm version](https://img.shields.io/npm/v/evenex.svg)](https://www.npmjs.com/package/evenex)
+[![npm downloads](https://img.shields.io/npm/dm/evenex.svg)](https://www.npmjs.com/package/evenex)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/evenex.svg)](https://bundlephobia.com/package/evenex)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Install
+[English](README.md) | [简体中文](README_zh.md)
 
-Please make sure you install this library using npm or another package manager in a Node.js environment.
+## ✨ Features
 
-```shell
-npm install --save evenex
+- ✅ Type-safe event definitions
+- 🔁 `on` / `once` / `off` / `emit` API
+- 🧼 Clear & remove listeners easily
+- 🧰 Utility methods: `has`, `listenerCount`, `eventNames`, `listeners`
+- 🛡️ Global error handling with `onError`
+- 🧠 Debug mode for development
+- ⚡ Zero dependencies & lightweight
+
+## 📦 Installation
+
+```bash
+npm install evenex
+# or
+yarn add evenex
+# or
+pnpm add evenex
 ```
 
-Then, utilize modern module bundling tools such as Vite or Webpack to import this library using modular syntax.
+## 🪄 Basic Usage
 
-```javascript
-// Using ES Module
-import { CreateEvenex } from 'evenex'
+```typescript
+import evenex from 'evenex'
+
+// Listen to an event
+evenex.on('hello', (name: string) => {
+  console.log(`Hello, ${name}!`)
+})
+
+// Emit event
+evenex.emit('hello', 'World')
+// -> Hello, World!
 ```
 
-```javascript
-// Using CommonJS
-var { CreateEvenex } = require('evenex')
-```
+## 🧠 Type-safe Events
 
-## Usage
+You can define your own event map interface for better type inference:
 
-```javascript
-import { CreateEvenex } from 'evenex'
-const evenex = CreateEvenex()
+```typescript
+import { createEvenex } from 'evenex'
 
-let count = 0
-const setCount = (val) => (count = val)
-
-const on1 = (num) => {
-  setCount(num)
+interface MyEvents {
+  'user:login': [userId: string]
+  'user:logout': []
 }
-const on2 = (count) => {
-  setTimeout(() => {
-    console.log(`emit1-count:`, count)
-  }, 100)
-}
 
-// Listen for events
-evenex.on('changeCount', on1)
-evenex.on('changeCount', on2)
-evenex.on('test', on2)
+const bus = createEvenex<MyEvents>()
 
-setTimeout(() => {
-  // Trigger events
-  evenex.emit('changeCount', count + 1)
+bus.on('user:login', (userId) => {
+  console.log('User logged in:', userId)
+})
 
-  console.log('has -> changeCount 01', evenex.has('changeCount'))
-
-  // Unsubscribe from events
-  evenex.off('changeCount', on1)
-  evenex.off('changeCount', on2)
-
-  // Check if an event exists
-  console.log('has -> changeCount 02', evenex.has('changeCount'))
-
-  console.log('events -> 01', evenex.events)
-
-  // Clear all events
-  evenex.clear()
-
-  console.log('events -> 02', evenex.events)
-}, 1000)
+bus.emit('user:login', '12345') // ✅ OK
+bus.emit('user:login') // ❌ Type error
 ```
 
-## API
+## 🧼 Removing Listeners
 
-### on
+```typescript
+const handler = () => console.log('event')
 
-Register a handler for a specified event.
+bus.on('foo', handler)
+bus.off('foo', handler) // remove specific
+bus.off('foo') // remove all listeners of foo
+bus.clear() // remove all listeners of all events
+```
 
-**Parameters**
+## 🛠 API
 
-- `type` **(string)** The type of event to listen for.
-- `handler` **(Function)** The function to call when the specified event is received.
-- `thisArg` **(any)** The context to be used when calling the function.
+| Method                 | Description                                      |
+| ---------------------- | ------------------------------------------------ |
+| `on(event, handler)`   | Subscribe to an event                            |
+| `once(event, handler)` | Subscribe once only                              |
+| `off(event, handler?)` | Unsubscribe handler or all handlers of the event |
+| `emit(event, ...args)` | Trigger event                                    |
+| `has(event)`           | Check if event has listeners                     |
+| `listenerCount(event)` | Get number of listeners                          |
+| `eventNames()`         | Get all event names                              |
+| `listeners(event)`     | Get all listener functions                       |
+| `clear(event?)`        | Clear specific or all events                     |
+| `removeAllListeners()` | Alias for `clear()`                              |
 
-### off
+## 🪝 Global Error Handling
 
-Unsubscribe from handling a specific event.
+```typescript
+import { createEvenex } from 'evenex'
 
-**Parameters**
+const bus = createEvenex({
+  onError(error, event, handler) {
+    console.error(`Error in ${String(event)}:`, error)
+  }
+})
 
-- `type` **(string)** The type of event to unsubscribe from.
-- `handler` **(Function)** The handler function registered for the event.
+bus.on('boom', () => {
+  throw new Error('💥')
+})
 
-### emit
+bus.emit('boom') // error is caught by onError
+```
 
-Trigger all handlers registered for the specified event.
+## 📄 License
 
-**Parameters**
-
-- `type` **(string)** The type of event to trigger.
-- `...payload` **(any)** Any arguments that need to be passed.
-
-### clear
-
-Clear all handlers registered for events.
-
-### has
-
-Check if the specified event exists
-
-**Parameters**
-
-- `type` **(string)** The type of event to check.
+[MIT License](LICENSE) © OpenKnights Contributors
