@@ -39,16 +39,14 @@
     "format": "prettier . --write",
     "release": "bumpp && pnpm publish"
   },
-  "dependencies": {
+  "devDependencies": {
+    "@king-3/eslint-config": "^1.0.8",
+    "@king-3/prettier-config": "^1.0.2",
     "bumpp": "^10.2.3",
     "eslint": "^9.34.0",
     "prettier": "^3.6.2",
     "tsdown": "^0.14.2",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
-  },
-  "devDependencies": {
-    "@king-3/eslint-config": "^1.0.8",
-    "@king-3/prettier-config": "^1.0.2"
   }
 }

@@ -7,7 +7,13 @@ settings:
 importers:
 
   .:
-    dependencies:
+    devDependencies:
+      '@king-3/eslint-config':
+        specifier: ^1.0.8
+        version: 1.0.8(eslint@9.34.0(jiti@2.5.1))(typescript@5.9.2)
+      '@king-3/prettier-config':
+        specifier: ^1.0.2
+        version: 1.0.2
       bumpp:
         specifier: ^10.2.3
         version: 10.2.3
@@ -26,13 +32,6 @@ importers:
       vitest:
         specifier: ^3.2.4
         version: 3.2.4(@types/debug@4.1.12)(jiti@2.5.1)(yaml@2.8.1)
-    devDependencies:
-      '@king-3/eslint-config':
-        specifier: ^1.0.8
-        version: 1.0.8(eslint@9.34.0(jiti@2.5.1))(typescript@5.9.2)
-      '@king-3/prettier-config':
-        specifier: ^1.0.2
-        version: 1.0.2
 
 packages:
 
