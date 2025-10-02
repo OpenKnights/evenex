@@ -19,7 +19,7 @@
   },
   "author": "king-3 <w2196592083@gmail.com>",
   "files": [
-    "dist/"
+    "dist"
   ],
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -29,24 +29,26 @@
       "types": "./dist/index.d.ts",
       "require": "./dist/index.cjs",
       "import": "./dist/index.js"
-    },
-    "./*": "./*"
+    }
   },
   "scripts": {
-    "build": "tsdown --clear --dts",
-    "test": "vitest run",
+    "build": "tsdown",
+    "test": "vitest",
     "lint": "eslint",
     "lint:fix": "eslint --fix",
-    "format": "prettier --write ./**/*.{ts,json,md}",
+    "format": "prettier . --write",
     "release": "bumpp && pnpm publish"
   },
   "dependencies": {
-    "@king-3/eslint-config": "^1.0.3",
     "bumpp": "^10.2.3",
     "eslint": "^9.34.0",
     "prettier": "^3.6.2",
     "tsdown": "^0.14.2",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
+  },
+  "devDependencies": {
+    "@king-3/eslint-config": "^1.0.8",
+    "@king-3/prettier-config": "^1.0.2"
   }
 }
