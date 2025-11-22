@@ -110,6 +110,12 @@ bus.on('boom', () => {
 bus.emit('boom') // error is caught by onError
 ```
 
-## 📄 许可证
+## 📄 License
 
-[MIT 许可证](LICENSE) © OpenKnights 贡献者
+[MIT](./LICENSE) 许可证 © 2025-至今 [king3](https://github.com/coderking3)
+
+## 🤝 贡献
+
+欢迎贡献、问题和功能请求!
+
+请随时查看 [issues 页面](https://github.com/OpenKnights/better-mock-server/issues)。

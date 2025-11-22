@@ -112,4 +112,10 @@ bus.emit('boom') // error is caught by onError
 
 ## 📄 License
 
-[MIT License](LICENSE) © OpenKnights Contributors
+[MIT](./LICENSE) License © 2025-PRESENT [king3](https://github.com/coderking3)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check the [issues page](https://github.com/OpenKnights/evenex/issues).
