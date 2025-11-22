@@ -7,6 +7,7 @@ import type {
   Events,
   EventType
 } from './types'
+
 import { safeExecute, validateEventHandler, validateEventType } from './util'
 
 export interface EvenexOptions {

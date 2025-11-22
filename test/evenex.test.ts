@@ -1,6 +1,8 @@
 import type { EventMap } from '../src/types'
+
 // evenex.test.ts
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+
 import { createEvenex, Evenex } from '../src/evenex'
 
 describe('Evenex', () => {

@@ -1,4 +1,5 @@
 import type { EvenexOptions } from './evenex'
+
 import evenex, { createEvenex, Evenex } from './evenex'
 
 export { createEvenex, Evenex, type EvenexOptions }

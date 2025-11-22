@@ -1,5 +1,6 @@
 // util.test.ts
 import { describe, expect, it, vi } from 'vitest'
+
 import {
   isFunction,
   isObject,
